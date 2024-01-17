@@ -7,7 +7,7 @@ const todoRoutes = require('./routes/todoRoutes')
 const app = express();
 
 // connect to mongoDB
-const dbURI = 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.2';
+const dbURI = 'mongodb://127.0.0.1:27017/todo-list?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.0.2';
 mongoose.connect(dbURI,{useNewUrlParser: true, useUnifiedTopology: true})
     .then((result)=> {console.log('connected to db');
      app.listen(3000)})

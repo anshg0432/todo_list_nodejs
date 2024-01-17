@@ -30,8 +30,8 @@
       
       <div class="form-group mr-3 mb-0">
         <form action="/todo-list" method="POST">
-        <input ng-model="yourTask" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter a task here"/>
-        <button type="submit" class="btn btn-primary mr-3" g-click="saveTask()">Save</button>
+        <input ng-model="yourTask" type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter a task here" name="todoItem"/>
+        <button class="btn btn-primary mr-3" >Save</button>
         <button type="button" class="btn btn-warning" ng-click="getTask()">Get Tasks</button>
       </form>
     </div>
@@ -53,18 +53,20 @@
           </thead>
           <tbody>
             
-              <% tasks.forEach(task => { %>
-            <tr ng-repeat="task in tasks" class="{{ task.status ? 'table-success' : 'table-light' }}">
-              <td>{{ $index + 1 }}</td>
-              <td class="{{ task.status ? 'complete' : 'task' }}"><%= task.todoItem %></td>
-              <td><%= task.status %></td>
+
+           
+              <% for(let i=0;i<tasks.length; i++){ %>
+            <tr class="status">
+              <td><%= i+1 %></td>
+              <td class="todoItem"><%= tasks[i].todoItem %></td>
+              <td><%= tasks[i].status %></td>
               <td>
                 <button class="btn btn-danger" ng-click="delete($index)">Delete</button>
                 <button class="btn btn-success" ng-click="finished($index)">Finished</button>
               </td>
             </tr>
-            <% }) %>
-
+            <% } %>
+           
           </tbody>
         </table>
       </div>
